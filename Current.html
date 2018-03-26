@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+          <script language="JavaScript">
+  var message = new Array();
+  message[0] = ""
+  var reps = 2;
+  var speed = 666; 
+  var p = message.length;
+  var T = "";
+  var C = 0;
+  var mC = 0;
+  var s = 0;
+  var sT = null;
+  if (reps < 1) reps = 1;
+  function doIt() {
+  T = message[mC];
+  A();
+  }
+  function A() {
+  s++;
+  if (s > 8) { s = 1;}
+  if (s == 1) { document.title = '🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊'; }
+  if (s == 2) { document.title = 'CURRENTLY'; }
+  if (s == 3) { document.title = '🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊'; }
+  if (s == 4) { document.title = 'CURRENTLY'; }
+  if (s == 5) { document.title = '🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊'; }
+  if (s == 6) { document.title = 'CURRENTLY'; }
+  if (s == 7) { document.title = '🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊'; }
+  if (s == 8) { document.title = 'CURRENTLY'; }if (C < (8 * reps)) {
+  sT = setTimeout("A()", speed);
+  C++;
+  }
+  else {
+  C = 0;
+  s = 0;
+  mC++;
+  if(mC > p - 1) mC = 0;
+  sT = null;
+  doIt();
+     }
+  }
+  doIt();
+
+  (function() {
+    var template = '✊☔☁☁☁☠⛔☁☁☁⏳☔⚠☁☁⛔⏳☠💣✊🏾'.split(''),
+      len = template.length,
+      chars, string, i, j, k,
+      pushOrHash = typeof window.history.pushState === 'function',
+    
+    increase = function(n) {
+      return n < len - 1 ? n + 1 : 0;
+    },
+    
+    update = function() {
+      chars = [];
+      j = k;
+      
+      for (i=0; i<len; i++) {
+        j = increase(j);
+        chars[i] = template[j];
+      }
+      
+      string = ['/', chars.join(''), '/'].join('');
+      k = increase(k);
+      
+      if (pushOrHash) {
+        window.history.pushState(null, null, string);
+      } else {
+        window.document.location.hash = string;
+      }
+      
+      setTimeout(update, 1000);
+    };
+    
+    update();
+  })();
+  </script>
+
+<center><video width="640" height="480" autoplay muted="chair.mp4">
+  <source src="chair.mp4" type="video/mp4"><center>

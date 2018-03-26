@@ -1,0 +1,56 @@
+$(document).ready(function(){
+	
+	var titles = [
+	        "Ivan Chen",
+	        "is",
+	        "Designing",
+	        "Mind"
+	        "Melting"
+	        "Experiences"
+	        "😁😁😁😁"
+	];
+
+	// option 1:
+	function titleAniCircular(i) {
+	        // from first to last title and back again, forever
+	        i = (!i) ? 0 : (i*1+1) % titles.length;
+	        $('title').html(titles[i]);
+	        setTimeout(titleAniCircular, 500, [i]);
+	};
+
+	titleAniCircular(5);
+
+	// code adapted from constantdullaart.com
+	
+	var template = '😀😬😁😂😃😄😅😆😇😉😊'.split(''),
+		len = template.length,
+		chars, string, i, j, k,
+		pushOrHash = typeof window.history.pushState === 'function',
+	
+	increase = function(n) {
+		return n < len - 1 ? n + 1 : 0;
+	},
+	
+	update = function() {
+		chars = [];
+		j = k;
+		
+		for (i=0; i<len; i++) {
+			j = increase(j);
+			chars[i] = template[j];
+		}
+		
+		string = ['/', chars.join(''), '/'].join('');
+		k = increase(k);
+		
+		if (pushOrHash) {
+			window.history.pushState(null, null, string);
+		} else {
+			window.document.location.hash = string;
+		}
+		
+		setTimeout(update, 1000);
+	};
+	
+	//update();
+});
